@@ -25,7 +25,7 @@ namespace UnitTests.DataRepositoryTests
         public void DataBaseCriationTest()
         {
             int rez = 0;
-            var dataBaseServise = new DataBaseService(true);
+            var dataBaseServise = new DataBaseService();
             string sessionCode = "abc";
             dataBaseServise.AddNewUser("jeka", "lev22", sessionCode);
             if (dataBaseServise.AuthorizedUser("jeka", "lev22"))

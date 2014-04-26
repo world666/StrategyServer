@@ -34,6 +34,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.95\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
@@ -85,7 +88,6 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccess\ServerContext.cs" />
-    <Compile Include="DataAccess\ServerDbInitializer.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\GenericRepository\DataRepository.cs" />
     <Compile Include="Models\GenericRepository\IDataRepository.cs" />

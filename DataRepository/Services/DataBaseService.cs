@@ -14,15 +14,6 @@ namespace DataRepository.Services
 {
     public class DataBaseService
     {
-        public DataBaseService()
-        {
-        }
-        public DataBaseService(bool initDataBase)
-        {
-            if (initDataBase)
-                Database.SetInitializer(new ServerDbInitializer());
-        }
-
         public void AddNewUser(string login, string hashCode, string sessionCode)
         {
             var users = new Users
@@ -59,20 +50,6 @@ namespace DataRepository.Services
                     return true;
             }
             return false;
-        }
-
-        private static string RandomString(int size)
-        {
-            string code = null;
-            var buf = new byte[size];
-            var rand = new RNGCryptoServiceProvider(new CspParameters());
-            rand.GetBytes(buf);
-            rand.Dispose();
-            for (int i = 0; i < size; i++)
-            {
-                code += buf[i].ToString("D3");
-            }
-            return code;
         }
 
         public RegistrationState Registration(string login, string password, out string sessionCode)
@@ -129,6 +106,20 @@ namespace DataRepository.Services
                 sessionCode = "0";
                 return AuthorizationState.WrongLoginOrPassword;
             }
+        }
+
+        private static string RandomString(int size)
+        {
+            string code = null;
+            var buf = new byte[size];
+            var rand = new RNGCryptoServiceProvider(new CspParameters());
+            rand.GetBytes(buf);
+            rand.Dispose();
+            for (int i = 0; i < size; i++)
+            {
+                code += buf[i].ToString("D3");
+            }
+            return code;
         }
 
     }
