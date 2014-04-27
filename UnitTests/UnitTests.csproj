@@ -62,6 +62,10 @@
       <Project>{f276bb06-7b38-4b37-921a-3c0954f50235}</Project>
       <Name>DataRepository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StrategyServices\StrategyServices.csproj">
+      <Project>{3f453b62-8abf-42f0-b363-2c8fdb0e9cad}</Project>
+      <Name>StrategyServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

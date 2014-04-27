@@ -7,6 +7,7 @@ using DataRepository.Models;
 using DataRepository.Services;
 using NUnit.Framework;
 using System.Threading.Tasks;
+using StrategyServices.Users;
 
 namespace UnitTests.DataRepositoryTests
 {

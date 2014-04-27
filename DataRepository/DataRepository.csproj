@@ -86,7 +86,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DataAccess\ServerContext.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\GenericRepository\DataRepository.cs" />
