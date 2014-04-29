@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DataRepository.DataAccess;
 using DataRepository.Models;
-using DataRepository.Services;
+using DataRepository.Services.DataBaseService;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using StrategyServices.Users;
@@ -15,36 +15,64 @@ namespace UnitTests.DataRepositoryTests
     class UsersTable
     {
         [Test]
-        public void FirstTest()
-        {
-            int x = 100;
-            Assert.AreEqual(100, x);
-        }
-
-
-        [Test]
-        public void DataBaseCriationTest()
+        public void Test1DataBaseCriation()
         {
             int rez = 0;
-            var dataBaseServise = new DataBaseService();
+            var usersService = new UsersService();
             string sessionCode = "abc";
-            dataBaseServise.AddNewUser("jeka", "lev22", sessionCode);
-            if (dataBaseServise.AuthorizedUser("jeka", "lev22"))
+            usersService.AddNewUser("user1", "1111", sessionCode);
+            if (usersService.AuthorizedUser("user1", "1111"))
                 rez++;
-            dataBaseServise.DeleteUser("jeka", "lev22");
-            if (!dataBaseServise.AuthorizedUser("jeka", "lev22"))
+            usersService.DeleteUser("user1", "1111");
+            if (!usersService.AuthorizedUser("user1", "1111"))
                 rez++;
             Assert.AreEqual(rez, 2);
         }
 
         [Test]
-        public void RegistrationTest()
+        public void Test2Registration()
         {
-            var dataBaseServise = new DataBaseService();
+            int rez = 0;
+            var usersService = new UsersService();
             string sessionCode;
-            RegistrationState regRez = dataBaseServise.Registration("jeka", "lev22", out sessionCode);
-            RegistrationState mustBe = RegistrationState.Success;
-            Assert.AreEqual(regRez, mustBe);
+            if (usersService.Registration("jeka", "12777", out sessionCode) == RegistrationState.Success)
+                rez++;
+            if (usersService.Registration("andrey", "666", out sessionCode) == RegistrationState.Success)
+                rez++;
+            if (usersService.Registration("lev22", "cap121", out sessionCode) == RegistrationState.Success)
+                rez++;
+            if (usersService.Registration("andrey", "555", out sessionCode) == RegistrationState.LoginExist)
+                rez++;
+            Assert.AreEqual(rez, 4);
+        }
+
+        [Test]
+        public void Test3Authorization()
+        {
+            int rez = 0;
+            var usersService = new UsersService();
+            string sessionCode;
+            if (usersService.Authorization("jeka", "12777", out sessionCode) == AuthorizationState.Success)
+                rez++;
+            if (usersService.Authorization("lev22", "cap121", out sessionCode) == AuthorizationState.Success)
+                rez++;
+            if (usersService.Authorization("lev23", "cap121", out sessionCode) == AuthorizationState.WrongLoginOrPassword)
+                rez++;
+            if (usersService.Authorization("lev22", "5800", out sessionCode) == AuthorizationState.WrongLoginOrPassword)
+                rez++;
+            if (rez == 4)
+            {
+                usersService.DeleteUser("jeka", "12777");
+                if (!usersService.AuthorizedUser("jeka", "12777"))
+                    rez++;
+                usersService.DeleteUser("andrey", "666");
+                if (!usersService.AuthorizedUser("andrey", "666"))
+                    rez++;
+                usersService.DeleteUser("lev22", "cap121");
+                if (!usersService.AuthorizedUser("lev22", "cap121"))
+                    rez++;
+            }
+            Assert.AreEqual(rez, 7);
         }
     }
 }

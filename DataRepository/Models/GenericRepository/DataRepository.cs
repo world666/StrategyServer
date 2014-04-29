@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using EntityFramework.Extensions;
 
 namespace DataRepository.Models.GenericRepository
 {
@@ -34,12 +35,14 @@ namespace DataRepository.Models.GenericRepository
         public virtual void Delete(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
+            _context.SaveChanges();
         }
 
         public virtual void Delete(IQueryable<TEntity> entities)
         {
             foreach (TEntity entity in entities.ToList())
                 _context.Set<TEntity>().Remove(entity);
+            _context.SaveChanges();
         }
 
         public virtual void Edit(TEntity entity)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataRepository.Models;
-using DataRepository.Services;
+using DataRepository.Services.DataBaseService;
 
 namespace StrategyServices.Users
 {
@@ -12,15 +12,15 @@ namespace StrategyServices.Users
     {
         public UserService()
         {
-            _dataBaseService = new DataBaseService();
+            _usersService = new UsersService();
         }
         public RegistrationState Registration(string login, string password, out string sessionCode)
         {
-            return _dataBaseService.Registration(login, password, out sessionCode);
+            return _usersService.Registration(login, password, out sessionCode);
         }
         public AuthorizationState Authorization(string login, string password, out string sessionCode)
         {
-            return _dataBaseService.Authorization(login, password, out sessionCode);
+            return _usersService.Authorization(login, password, out sessionCode);
         }
         public string GetCommandString(int i)
         {
@@ -37,6 +37,6 @@ namespace StrategyServices.Users
             }
         }
 
-        private DataBaseService _dataBaseService;
+        private UsersService _usersService;
     }
 }

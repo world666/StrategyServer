@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataRepository.DataAccess;
+﻿using System.Security.Cryptography;
+using System.Web.Helpers;
 using DataRepository.Models;
 using DataRepository.Models.GenericRepository;
-using System.Security.Cryptography;
-using System.Web.Helpers;
 
-namespace DataRepository.Services
+namespace DataRepository.Services.DataBaseService
 {
-    public class DataBaseService
+    public class UsersService
     {
-        public void AddNewUser(string login, string hashCode, string sessionCode)
+        public void AddNewUser(string login, string password, string sessionCode)
         {
+            var hashCode = Crypto.HashPassword(password);
             var users = new Users
             {
                 Login = login,
@@ -61,9 +55,8 @@ namespace DataRepository.Services
             }
             else
             {
-                var hashCode = Crypto.HashPassword(password);
                 sessionCode = login + RandomString(10);
-                AddNewUser(login, hashCode, sessionCode);
+                AddNewUser(login, password, sessionCode);
                 return RegistrationState.Success;
             }
 

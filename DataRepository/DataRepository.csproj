@@ -94,7 +94,7 @@
     <Compile Include="Models\GenericRepository\RepoUnit.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DataBaseService.cs" />
+    <Compile Include="Services\DataBaseService\UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
