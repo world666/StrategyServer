@@ -50,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\IUserService.cs" />
     <Compile Include="Users\UserService.cs" />
+    <Compile Include="Versions\IVersionService.cs" />
+    <Compile Include="Versions\VersionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataRepository\DataRepository.csproj">
