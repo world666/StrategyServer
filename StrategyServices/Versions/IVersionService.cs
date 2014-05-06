@@ -16,8 +16,5 @@ namespace StrategyServices.Versions
 
         [OperationContract]
         VersionState VerifyUserAppVersion(string userAppVersion);
-
-        [OperationContract]
-        string GetCommandString(int i);
     }
 }

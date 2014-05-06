@@ -22,20 +22,6 @@ namespace StrategyServices.Versions
         {
             return _versionsService.VerifyUserAppVersion(userAppVersion);
         }
-        public string GetCommandString(int i)
-        {
-            switch (i)
-            {
-                case 1:// TODO: Реализация старта выполнения ваших команд
-                    return "Начало обработки";
-
-                case 0:// TODO: Реализация остановки выполнения ваших команд
-                    return "Привет";
-
-                default:// TODO: Выполнение какой-либо вашей команды
-                    return "Получил " + i.ToString();
-            }
-        }
 
         private VersionsService _versionsService;
     }

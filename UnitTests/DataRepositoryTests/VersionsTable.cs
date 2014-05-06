@@ -17,7 +17,7 @@ namespace UnitTests.DataRepositoryTests
         [Test]
         public void TestVersions()
         {
-           // Database.SetInitializer(new ServerDbInitializer());
+            Database.SetInitializer(new ServerDbInitializer());
             int rez = 0;
             var versionsService = new VersionsService();
             if (versionsService.VerifyUserAppVersion("v1.0") == VersionState.OutDated)

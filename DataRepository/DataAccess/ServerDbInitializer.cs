@@ -20,6 +20,7 @@ namespace DataRepository.DataAccess
                 {
                     new Versions {VersionName = "BusinessStartegy v1.0"},
                 };
+
             versions.ForEach(v => context.Versions.Add(v));
 
             context.SaveChanges();
