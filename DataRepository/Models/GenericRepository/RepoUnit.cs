@@ -8,6 +8,7 @@ namespace DataRepository.Models.GenericRepository
     {
         private ServerContext _context;
         private IDataRepository<Users> _Users;
+        private IDataRepository<Versions> _Versions;
 
         private ServerContext getContext()
         {
@@ -18,6 +19,11 @@ namespace DataRepository.Models.GenericRepository
         public IDataRepository<Users> Users
         {
             get { return _Users ?? (_Users = getRepository<Users>()); }
+        }
+
+        public IDataRepository<Versions> Versions
+        {
+            get { return _Versions ?? (_Versions = getRepository<Versions>()); }
         }
 
         public void Commit()

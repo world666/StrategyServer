@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using DataRepository.DataAccess;
@@ -17,6 +18,7 @@ namespace UnitTests.DataRepositoryTests
         [Test]
         public void Test1DataBaseCriation()
         {
+            Database.SetInitializer(new ServerDbInitializer());
             int rez = 0;
             var usersService = new UsersService();
             string sessionCode = "abc";

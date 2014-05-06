@@ -8,4 +8,8 @@
     {
         Success, WrongLoginOrPassword
     }
+    public enum VersionState
+    {
+        Actual, OutDated
+    }
 }
