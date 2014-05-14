@@ -88,14 +88,14 @@
   <ItemGroup>
     <Compile Include="DataAccess\ServerContext.cs" />
     <Compile Include="DataAccess\ServerDbInitializer.cs" />
-    <Compile Include="Models\Businesses.cs" />
+    <Compile Include="Models\Business.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\GenericRepository\DataRepository.cs" />
     <Compile Include="Models\GenericRepository\IDataRepository.cs" />
     <Compile Include="Models\GenericRepository\IEntityId.cs" />
     <Compile Include="Models\GenericRepository\RepoUnit.cs" />
-    <Compile Include="Models\Regions.cs" />
-    <Compile Include="Models\States.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Versions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

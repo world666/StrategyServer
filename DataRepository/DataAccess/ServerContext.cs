@@ -7,9 +7,9 @@ namespace DataRepository.DataAccess
     {
         public IDbSet<Users> Users { get; set; }
         public IDbSet<Versions> Versions { get; set; }
-        public IDbSet<States> States { get; set; }
-        public IDbSet<Regions> Regions { get; set; }
-        public IDbSet<Businesses> Businesses { get; set; }
+        public IDbSet<State> States { get; set; }
+        public IDbSet<Region> Regions { get; set; }
+        public IDbSet<Business> Businesses { get; set; }
 
         public ServerContext()
             : base(GetConnectionName())

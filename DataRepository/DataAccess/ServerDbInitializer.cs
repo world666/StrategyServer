@@ -22,26 +22,48 @@ namespace DataRepository.DataAccess
                 };
             versions.ForEach(v => context.Versions.Add(v));
             //Init States table
-            var states = new List<States>
+            var states = new List<State>
             {
-                new States {StatesNamesList = new List<string> {"Ukraine", "Украина"}},
-                new States {StatesNamesList = new List<string> {"England", "Англия"}}
+                new State
+                {
+                    StatesNamesList = new List<string> {"Ukraine", "Украина"}, 
+                    Regions = new List<Region>
+                    {
+                        new Region 
+                        {
+                            RegionsNamesList = new List<string> {"Donetsk", "Донецк"},
+                            Businesses = new List<Business>
+                            {
+                                new Business
+                                {
+                                    BusinessesNamesList = new List<string> {"Plant", "Завод"}, 
+                                    Description = "Металлургический завод"
+                                }
+                            }
+                        }
+                    }
+                },
+                new State
+                {
+                    StatesNamesList = new List<string> {"England", "Англия"},
+                    Regions = new List<Region>
+                    {
+                        new Region
+                        {
+                            RegionsNamesList = new List<string> {"London", "Лондон"},
+                            Businesses = new List<Business>
+                            {
+                                new Business
+                                {
+                                    BusinessesNamesList = new List<string> {"Restaurant", "Ресторан"}, 
+                                    Description = "Итальянская кухня"
+                                }
+                            }
+                        }
+                    }
+                }
             };
             states.ForEach(v => context.States.Add(v));
-            //Init Regions table
-            var regions = new List<Regions>
-            {
-                new Regions {RegionsNamesList = new List<string> {"Donetsk", "Донецк"}, StatesId = 1},
-                new Regions {RegionsNamesList = new List<string> {"London", "Лондон"}, StatesId = 2}
-            };
-            regions.ForEach(v => context.Regions.Add(v));
-            //Init Businesses table
-            var businesses = new List<Businesses>
-            {
-                new Businesses {BusinessesNamesList = new List<string> {"Plant", "Завод"}, RegionsId = 1, Description = "Металлургический завод"},
-                new Businesses {BusinessesNamesList = new List<string> {"Restaurant", "Ресторан"}, RegionsId = 1, Description = "Итальянская кухня"}
-            };
-            businesses.ForEach(v => context.Businesses.Add(v));
 
             context.SaveChanges();
         }

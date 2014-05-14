@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +9,7 @@ using DataRepository.Models.GenericRepository;
 
 namespace DataRepository.Models
 {
-    public class Regions : IEntityId
+    public class Region : IEntityId
     {
         public int Id { get; set; }
         public string RegionsNames { get; set; }
@@ -23,8 +25,10 @@ namespace DataRepository.Models
                 RegionsNames = String.Join("[$]", value);
             }
         }
-        public int StatesId { get; set; }
-        public virtual States States { get; set; }
-        public virtual ICollection<Businesses> Businesses { get; set; }
+
+        public int StateId { get; set; }
+        public virtual State State { get; set; }
+
+        public virtual ICollection<Business> Businesses { get; set; }
     }
 }

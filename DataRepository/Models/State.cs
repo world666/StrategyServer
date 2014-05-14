@@ -7,7 +7,7 @@ using DataRepository.Models.GenericRepository;
 
 namespace DataRepository.Models
 {
-    public class States : IEntityId
+    public class State : IEntityId
     {
         public int Id { get; set; }
         public string StatesNames { get; set; }
@@ -23,6 +23,6 @@ namespace DataRepository.Models
                 StatesNames = String.Join("[$]", value);
             }
         }
-        public virtual ICollection<Regions> Regions { get; set; }
+        public virtual ICollection<Region> Regions { get; set; }
     }
 }

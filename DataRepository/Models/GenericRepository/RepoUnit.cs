@@ -9,9 +9,9 @@ namespace DataRepository.Models.GenericRepository
         private ServerContext _context;
         private IDataRepository<Users> _Users;
         private IDataRepository<Versions> _Versions;
-        private IDataRepository<States> _States;
-        private IDataRepository<Regions> _Regions;
-        private IDataRepository<Businesses> _Businesses;
+        private IDataRepository<State> _States;
+        private IDataRepository<Region> _Regions;
+        private IDataRepository<Business> _Businesses;
 
         private ServerContext getContext()
         {
@@ -29,19 +29,19 @@ namespace DataRepository.Models.GenericRepository
             get { return _Versions ?? (_Versions = getRepository<Versions>()); }
         }
 
-        public IDataRepository<States> States
+        public IDataRepository<State> States
         {
-            get { return _States ?? (_States = getRepository<States>()); }
+            get { return _States ?? (_States = getRepository<State>()); }
         }
 
-        public IDataRepository<Regions> Regions
+        public IDataRepository<Region> Regions
         {
-            get { return _Regions ?? (_Regions = getRepository<Regions>()); }
+            get { return _Regions ?? (_Regions = getRepository<Region>()); }
         }
 
-        public IDataRepository<Businesses> Businesses
+        public IDataRepository<Business> Businesses
         {
-            get { return _Businesses ?? (_Businesses = getRepository<Businesses>()); }
+            get { return _Businesses ?? (_Businesses = getRepository<Business>()); }
         }
 
         public void Commit()
