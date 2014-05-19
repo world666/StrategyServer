@@ -2,7 +2,7 @@
 
 namespace DataRepository.Models
 {
-    public class Versions : IEntityId
+    public class Version : IEntityId
     {
         public int Id { get; set; }
 

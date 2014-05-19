@@ -12,4 +12,8 @@
     {
         Actual, OutDated
     }
+    public enum Language
+    {
+        English, Russian
+    }
 }

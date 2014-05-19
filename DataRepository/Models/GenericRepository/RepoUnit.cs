@@ -7,8 +7,8 @@ namespace DataRepository.Models.GenericRepository
     public class RepoUnit : IDisposable
     {
         private ServerContext _context;
-        private IDataRepository<Users> _Users;
-        private IDataRepository<Versions> _Versions;
+        private IDataRepository<User> _Users;
+        private IDataRepository<Version> _Versions;
         private IDataRepository<State> _States;
         private IDataRepository<Region> _Regions;
         private IDataRepository<Business> _Businesses;
@@ -19,14 +19,14 @@ namespace DataRepository.Models.GenericRepository
         }
 
 
-        public IDataRepository<Users> Users
+        public IDataRepository<User> Users
         {
-            get { return _Users ?? (_Users = getRepository<Users>()); }
+            get { return _Users ?? (_Users = getRepository<User>()); }
         }
 
-        public IDataRepository<Versions> Versions
+        public IDataRepository<Version> Versions
         {
-            get { return _Versions ?? (_Versions = getRepository<Versions>()); }
+            get { return _Versions ?? (_Versions = getRepository<Version>()); }
         }
 
         public IDataRepository<State> States

@@ -25,8 +25,19 @@ namespace DataRepository.Models
                 BusinessesNames = String.Join("[$]", value);
             }
         }
-        public string Description { get; set; }
-
+        public string Descriptions { get; set; }
+        public List<string> DescriptionsList
+        {
+            get
+            {
+                var separator = new string[] { "[$]" };
+                return Descriptions.Split(separator, StringSplitOptions.None).ToList();
+            }
+            set
+            {
+                Descriptions = String.Join("[$]", value);
+            }
+        }
         public int RegionId { get; set; }
         public virtual Region Region { get; set; }
     }

@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRepositoryTests\BusinessesTable.cs" />
+    <Compile Include="DataRepositoryTests\RegionsTable.cs" />
+    <Compile Include="DataRepositoryTests\StatesTable.cs" />
     <Compile Include="DataRepositoryTests\UsersTable.cs" />
     <Compile Include="DataRepositoryTests\VersionsTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

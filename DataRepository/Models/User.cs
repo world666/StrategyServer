@@ -2,7 +2,7 @@
 
 namespace DataRepository.Models
 {
-    public class Users : IEntityId
+    public class User : IEntityId
     {
         public int Id { get; set; }
 

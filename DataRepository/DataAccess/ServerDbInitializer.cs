@@ -16,9 +16,9 @@ namespace DataRepository.DataAccess
                 context = new ServerContext();
 
             //Init Versions table
-            var versions = new List<Versions>
+            var versions = new List<DataRepository.Models.Version>
                 {
-                    new Versions {VersionName = "BusinessStartegy v1.0"},
+                    new DataRepository.Models.Version {VersionName = "BusinessStartegy v1.0"},
                 };
             versions.ForEach(v => context.Versions.Add(v));
             //Init States table
@@ -37,7 +37,24 @@ namespace DataRepository.DataAccess
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Plant", "Завод"}, 
-                                    Description = "Металлургический завод"
+                                    DescriptionsList = new List<string> {"Metallurgical works", "Металлургический завод"}
+                                },
+                                new Business
+                                {
+                                    BusinessesNamesList = new List<string> {"Mine", "Шахта"}, 
+                                    DescriptionsList = new List<string> {"Coalmine", "Угольная шахта"}
+                                }
+                            }
+                        },
+                        new Region 
+                        {
+                            RegionsNamesList = new List<string> {"Kiev", "Киев"},
+                            Businesses = new List<Business>
+                            {
+                                new Business
+                                {
+                                    BusinessesNamesList = new List<string> {"Stadium", "Стадион"}, 
+                                    DescriptionsList = new List<string> {"Olympic Stadium", "Олимпийский стадион"}
                                 }
                             }
                         }
@@ -56,7 +73,12 @@ namespace DataRepository.DataAccess
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Restaurant", "Ресторан"}, 
-                                    Description = "Итальянская кухня"
+                                    DescriptionsList = new List<string> {"Italian cuisine", "Итальянская кухня"}
+                                },
+                                new Business
+                                {
+                                    BusinessesNamesList = new List<string> {"Shopping center", "Торговый центр"}, 
+                                    DescriptionsList = new List<string> {"London's biggest shopping center", "Крупнейший торговый центр Лондона"}
                                 }
                             }
                         }

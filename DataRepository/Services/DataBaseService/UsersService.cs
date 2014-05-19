@@ -10,7 +10,7 @@ namespace DataRepository.Services.DataBaseService
         public void AddNewUser(string login, string password, string sessionCode)
         {
             var hashCode = Crypto.HashPassword(password);
-            var users = new Users
+            var users = new User
             {
                 Login = login,
                 HashPassword = hashCode,

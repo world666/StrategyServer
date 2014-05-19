@@ -5,8 +5,8 @@ namespace DataRepository.DataAccess
 {
     public class ServerContext : DbContext
     {
-        public IDbSet<Users> Users { get; set; }
-        public IDbSet<Versions> Versions { get; set; }
+        public IDbSet<User> Users { get; set; }
+        public IDbSet<Version> Versions { get; set; }
         public IDbSet<State> States { get; set; }
         public IDbSet<Region> Regions { get; set; }
         public IDbSet<Business> Businesses { get; set; }
