@@ -26,5 +26,32 @@ namespace DataRepository.Services.DataBaseService
                 StateId = r.StateId
             }).ToList();
         }
+
+        public void AddRegions(List<Region> newRegions)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var rg in newRegions)
+                {
+                    repoUnit.Regions.Save(rg);
+                }
+            }
+        }
+
+        public void DeleteRegions(List<int> regionIds)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var id in regionIds)
+                {
+                    var region = repoUnit.Regions.FindFirstBy(r => r.Id == id);
+                    if (region != null)
+                    {
+                        repoUnit.Regions.Delete(region);
+                    }
+                }
+            }
+        }
+
     }
 }

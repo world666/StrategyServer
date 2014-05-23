@@ -37,5 +37,36 @@ namespace UnitTests.DataRepositoryTests
                 rez++;
             Assert.AreEqual(rez, 8);
         }
+
+        [Test]
+        public void Test2AddandDeleteBusinesses()
+        {
+            int rez = 0;
+            var businessesService = new BusinessesService();
+            var newBusinesses = new List<Business>
+            {
+                new Business{BusinessesNamesList = new List<string> {"The Nickel Plant", "Никелевый завод"}, 
+                    DescriptionsList = new List<string> {"Largest nickel plant in Ukraine", "Крупнейший никелевый завод Украины"},
+                    RegionId = 2},
+            };
+            businessesService.AddBusinesses(newBusinesses);
+            var businesses = businessesService.GetBusinesses(Language.Russian, 2);
+            if (businesses.Count == 2)
+                rez++;
+            if (businesses[0].BusinessesNamesList[0] == "Стадион" && businesses[1].BusinessesNamesList[0] == "Никелевый завод")
+                rez++;
+            if (businesses[0].Descriptions == "Олимпийский стадион" && businesses[1].Descriptions == "Крупнейший никелевый завод Украины")
+                rez++;
+            businessesService.DeleteBusinesses(new List<int> { businesses[1].Id });
+            businesses = businessesService.GetBusinesses(Language.Russian, 2);
+            if (businesses.Count == 1)
+                rez++;
+            if (businesses[0].BusinessesNamesList[0] == "Стадион")
+                rez++;
+            if (businesses[0].Descriptions == "Олимпийский стадион")
+                rez++;
+            Assert.AreEqual(rez, 6);
+        }
+
     }
 }

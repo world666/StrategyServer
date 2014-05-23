@@ -14,5 +14,10 @@ namespace StrategyServices.States
         [OperationContract] // Делегируемый метод.
         List<State> GetStates(Language lang);
 
+        [OperationContract]
+        void AddStates(List<State> newStates);
+
+        [OperationContract]
+        void DeleteStates(List<int> stateIds);
     }
 }

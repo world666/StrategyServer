@@ -24,5 +24,32 @@ namespace DataRepository.Services.DataBaseService
                 StatesNamesList = new List<string>() { st.StatesNamesList[language] }
             }).ToList();
         }
+
+        public void AddStates(List<State> newStates)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var st in newStates)
+                {
+                    repoUnit.States.Save(st);
+                }
+            }
+        }
+
+        public void DeleteStates(List<int> stateIds)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var id in stateIds)
+                {
+                    var state = repoUnit.States.FindFirstBy(s => s.Id == id);
+                    if (state != null)
+                    {
+                        repoUnit.States.Delete(state);
+                    } 
+                }
+            }
+        }
+
     }
 }

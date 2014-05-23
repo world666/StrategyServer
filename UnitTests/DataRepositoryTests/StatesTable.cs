@@ -13,7 +13,7 @@ namespace UnitTests.DataRepositoryTests
     class StatesTable
     {
         [Test]
-        public void TestGetStates()
+        public void Test1GetStates()
         {
             int rez = 0;
             var statesService = new StatesService();
@@ -28,5 +28,31 @@ namespace UnitTests.DataRepositoryTests
                 rez++;
             Assert.AreEqual(rez, 4);
         }
+
+        [Test]
+        public void Test2AddandDeleteStates()
+        {
+            int rez = 0;
+            var statesService = new StatesService();
+            var newStates = new List<State>
+            {
+                new State{StatesNamesList = new List<string> {"Russia", "Россия"}},
+                new State{StatesNamesList = new List<string> {"Germany", "Германия"}}
+            };
+            statesService.AddStates(newStates);
+            var states = statesService.GetStates(Language.Russian);
+            if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия" && states[2].StatesNamesList[0] == "Россия" && states[3].StatesNamesList[0] == "Германия")
+                rez++;
+            if (states.Count == 4)
+                rez++;
+            statesService.DeleteStates(new List<int> { states[2].Id, states[3].Id });
+            states = statesService.GetStates(Language.Russian);
+            if (states.Count == 2)
+                rez++;
+            if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия")
+                rez++;
+            Assert.AreEqual(rez, 4);
+        }
+
     }
 }

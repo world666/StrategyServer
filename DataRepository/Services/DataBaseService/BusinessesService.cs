@@ -26,5 +26,32 @@ namespace DataRepository.Services.DataBaseService
                 RegionId = b.RegionId
             }).ToList();
         }
+
+        public void AddBusinesses(List<Business> newBusinesses)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var bns in newBusinesses)
+                {
+                    repoUnit.Businesses.Save(bns);
+                }
+            }
+        }
+
+        public void DeleteBusinesses(List<int> businessIds)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var id in businessIds)
+                {
+                    var business = repoUnit.Businesses.FindFirstBy(b => b.Id == id);
+                    if (business != null)
+                    {
+                        repoUnit.Businesses.Delete(business);
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -18,7 +18,14 @@ namespace StrategyServices.Regions
         {
             return _regionsService.GetRegions(lang, stateId);
         }
-
+        public void AddRegions(List<Region> newRegions)
+        {
+            _regionsService.AddRegions(newRegions);
+        }
+        public void DeleteRegions(List<int> regionIds)
+        {
+            _regionsService.DeleteRegions(regionIds);
+        }
         private RegionsService _regionsService;
     }
 }
