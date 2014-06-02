@@ -25,8 +25,14 @@ namespace DataRepository.Models
                 RegionsNames = String.Join("[$]", value);
             }
         }
-
         public int StateId { get; set; }
+        public double ProfitTax { get; set; }
+        public double GrossProfitTax { get; set; }
+        public double Industry { get; set; }
+        public double Cx { get; set; }
+        public double ServicesSector { get; set; }
+        public double Trade { get; set; }
+        public double Tourism { get; set; }
         public virtual State State { get; set; }
 
         public virtual ICollection<Business> Businesses { get; set; }

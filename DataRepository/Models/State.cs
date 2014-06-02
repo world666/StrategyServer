@@ -23,6 +23,10 @@ namespace DataRepository.Models
                 StatesNames = String.Join("[$]", value);
             }
         }
+        public double CountryDevelopmentCoef { get; set; }
+        public double CountryCurrencyUnit { get; set; }
+        public double NewsInfluenceCoef { get; set; }
+        public double LicensesExcises { get; set; }
         public virtual ICollection<Region> Regions { get; set; }
     }
 }

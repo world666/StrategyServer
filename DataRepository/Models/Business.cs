@@ -38,6 +38,19 @@ namespace DataRepository.Models
                 Descriptions = String.Join("[$]", value);
             }
         }
+        public string Addresses { get; set; }
+        public List<string> AddressesList
+        {
+            get
+            {
+                var separator = new string[] { "[$]" };
+                return Addresses.Split(separator, StringSplitOptions.None).ToList();
+            }
+            set
+            {
+                Addresses = String.Join("[$]", value);
+            }
+        }
         public int RegionId { get; set; }
         public virtual Region Region { get; set; }
     }

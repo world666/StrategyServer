@@ -13,7 +13,7 @@ namespace UnitTests.DataRepositoryTests
     class BusinessesTable
     {
         [Test]
-        public void TestGetBusinesses()
+        public void Test1GetBusinesses()
         {
             int rez = 0;
             var businessesService = new BusinessesService();
