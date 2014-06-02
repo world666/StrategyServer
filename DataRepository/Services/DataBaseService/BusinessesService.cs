@@ -23,6 +23,24 @@ namespace DataRepository.Services.DataBaseService
                 Id = b.Id,
                 BusinessesNamesList = new List<string>() { b.BusinessesNamesList[language] },
                 DescriptionsList = new List<string>() { b.DescriptionsList[language] },
+                AddressesList = new List<string>() { b.AddressesList[language] },
+                RegionId = b.RegionId     
+            }).ToList();
+        }
+
+        public List<Business> GetBusinesses(int regionId)
+        {
+            var businesses = new List<Business>();
+            using (var repoUnit = new RepoUnit())
+            {
+                businesses = repoUnit.Regions.FindFirstBy(r => r.Id == regionId).Businesses.ToList();
+            }
+            return businesses.Select(b => new Business()
+            {
+                Id = b.Id,
+                BusinessesNamesList = b.BusinessesNamesList,
+                DescriptionsList = b.DescriptionsList,
+                AddressesList = b.AddressesList,
                 RegionId = b.RegionId
             }).ToList();
         }
@@ -34,6 +52,17 @@ namespace DataRepository.Services.DataBaseService
                 foreach (var bns in newBusinesses)
                 {
                     repoUnit.Businesses.Save(bns);
+                }
+            }
+        }
+
+        public void EditBusinesses(List<Business> businesses)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var bns in businesses)
+                {
+                    repoUnit.Businesses.Edit(bns);
                 }
             }
         }

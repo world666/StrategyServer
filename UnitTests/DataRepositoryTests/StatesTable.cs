@@ -54,5 +54,32 @@ namespace UnitTests.DataRepositoryTests
             Assert.AreEqual(rez, 4);
         }
 
+        [Test]
+        public void Test3EditStates()
+        {
+            int rez = 0;
+            var statesService = new StatesService();
+            var states = statesService.GetStates();
+            if (states[0].LicensesExcises == 0 && states[1].LicensesExcises == 0)
+                rez++;
+            if (states.Count == 2)
+                rez++;
+            states[0].LicensesExcises = 1;
+            statesService.EditStates(states);
+            states = statesService.GetStates();
+            if (states.Count == 2)
+                rez++;
+            if (states[0].LicensesExcises == 1 && states[1].LicensesExcises == 0)
+                rez++;
+            states[0].LicensesExcises = 0;
+            statesService.EditStates(states);
+            states = statesService.GetStates();
+            if (states[0].LicensesExcises == 0 && states[1].LicensesExcises == 0)
+                rez++;
+            if (states.Count == 2)
+                rez++;
+            Assert.AreEqual(rez, 6);
+        }
+
     }
 }

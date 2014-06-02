@@ -15,7 +15,13 @@ namespace StrategyServices.States
         List<State> GetStates(Language lang);
 
         [OperationContract]
+        List<State> GetStates();
+
+        [OperationContract]
         void AddStates(List<State> newStates);
+
+        [OperationContract]
+        void EditStates(List<State> states);
 
         [OperationContract]
         void DeleteStates(List<int> stateIds);

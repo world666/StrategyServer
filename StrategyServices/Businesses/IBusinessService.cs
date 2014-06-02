@@ -14,7 +14,11 @@ namespace StrategyServices.Businesses
         [OperationContract] // Делегируемый метод.
         List<Business> GetBusinesses(Language lang, int regionId);
         [OperationContract]
+        List<Business> GetBusinesses(int regionId);
+        [OperationContract]
         void AddBusinesses(List<Business> newBusinesses);
+        [OperationContract]
+        void EditBusinesses(List<Business> businesses);
         [OperationContract]
         void DeleteBusinesses(List<int> businessIds);
     }

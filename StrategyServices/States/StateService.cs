@@ -18,9 +18,17 @@ namespace StrategyServices.States
         {
             return _statesService.GetStates(lang);
         }
+        public List<State> GetStates()
+        {
+            return _statesService.GetStates();
+        }
         public void AddStates(List<State> newStates)
         {
             _statesService.AddStates(newStates);
+        }
+        public void EditStates(List<State> states)
+        {
+            _statesService.EditStates(states);
         }
         public void DeleteStates(List<int> stateIds)
         {

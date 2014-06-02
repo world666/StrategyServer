@@ -18,9 +18,17 @@ namespace StrategyServices.Businesses
         {
             return _businessesService.GetBusinesses(lang, regionId);
         }
+        public List<Business> GetBusinesses(int regionId)
+        {
+            return _businessesService.GetBusinesses(regionId);
+        }
         public void AddBusinesses(List<Business> newBusinesses)
         {
             _businessesService.AddBusinesses(newBusinesses);
+        }
+        public void EditBusinesses(List<Business> businesses)
+        {
+            _businessesService.EditBusinesses(businesses);
         }
         public void DeleteBusinesses(List<int> businessIds)
         {

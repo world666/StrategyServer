@@ -21,7 +21,29 @@ namespace DataRepository.Services.DataBaseService
             return allstates.Select(st => new State()
             {
                 Id = st.Id,
-                StatesNamesList = new List<string>() { st.StatesNamesList[language] }
+                StatesNamesList = new List<string>() { st.StatesNamesList[language] },
+                CountryDevelopmentCoef = st.CountryDevelopmentCoef,
+                CountryCurrencyUnit = st.CountryCurrencyUnit,
+                NewsInfluenceCoef = st.NewsInfluenceCoef,
+                LicensesExcises = st.LicensesExcises
+            }).ToList();
+        }
+
+        public List<State> GetStates()
+        {
+            var allstates = new List<State>();
+            using (var repoUnit = new RepoUnit())
+            {
+                allstates.AddRange(repoUnit.States.Load());
+            }
+            return allstates.Select(st => new State()
+            {
+                Id = st.Id,
+                StatesNamesList = st.StatesNamesList,
+                CountryDevelopmentCoef = st.CountryDevelopmentCoef,
+                CountryCurrencyUnit = st.CountryCurrencyUnit,
+                NewsInfluenceCoef = st.NewsInfluenceCoef,
+                LicensesExcises = st.LicensesExcises
             }).ToList();
         }
 
@@ -32,6 +54,17 @@ namespace DataRepository.Services.DataBaseService
                 foreach (var st in newStates)
                 {
                     repoUnit.States.Save(st);
+                }
+            }
+        }
+
+        public void EditStates(List<State> states)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var st in states)
+                {
+                    repoUnit.States.Edit(st);
                 }
             }
         }
