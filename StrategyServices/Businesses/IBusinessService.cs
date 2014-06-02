@@ -11,9 +11,9 @@ namespace StrategyServices.Businesses
     [ServiceContract]
     public interface IBusinessService
     {
-        [OperationContract] // Делегируемый метод.
+        [OperationContract(Name = "GetBusinessesByLanguage")] // Делегируемый метод.
         List<Business> GetBusinesses(Language lang, int regionId);
-        [OperationContract]
+        [OperationContract(Name = "GetBusinesses")]
         List<Business> GetBusinesses(int regionId);
         [OperationContract]
         void AddBusinesses(List<Business> newBusinesses);

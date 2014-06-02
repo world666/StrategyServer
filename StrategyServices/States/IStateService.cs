@@ -11,10 +11,10 @@ namespace StrategyServices.States
     [ServiceContract]
     public interface IStateService
     {
-        [OperationContract] // Делегируемый метод.
+        [OperationContract(Name = "GetStatesByLanguage")] // Делегируемый метод.
         List<State> GetStates(Language lang);
 
-        [OperationContract]
+        [OperationContract(Name = "GetStates")]
         List<State> GetStates();
 
         [OperationContract]

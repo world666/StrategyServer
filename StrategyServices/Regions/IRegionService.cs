@@ -11,9 +11,9 @@ namespace StrategyServices.Regions
     [ServiceContract]
     public interface IRegionService
     {
-        [OperationContract] // Делегируемый метод.
+        [OperationContract(Name = "GetRegionsByLanguage")] // Делегируемый метод.
         List<Region> GetRegions(Language lang, int stateId);
-        [OperationContract]
+        [OperationContract(Name = "GetRegions")]
         List<Region> GetRegions(int stateId);
         [OperationContract]
         void AddRegions(List<Region> newRegions);
