@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +13,42 @@ namespace StrategyServices.Businesses
     public interface IBusinessService
     {
         [OperationContract(Name = "GetBusinessesByLanguage")] // Делегируемый метод.
-        List<Business> GetBusinesses(Language lang, int regionId);
+        List<BusinessData> GetBusinesses(Language lang, int regionId);
         [OperationContract(Name = "GetBusinesses")]
-        List<Business> GetBusinesses(int regionId);
+        List<BusinessData> GetBusinesses(int regionId);
         [OperationContract]
-        void AddBusinesses(List<Business> newBusinesses);
+        void AddBusinesses(List<BusinessData> businessesList);
         [OperationContract]
-        void EditBusinesses(List<Business> businesses);
+        void EditBusinesses(List<BusinessData> businessesList);
         [OperationContract]
         void DeleteBusinesses(List<int> businessIds);
+    }
+
+    [DataContract]
+    public class BusinessData
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string BusinessesNames { get; set; }
+
+        [DataMember]
+        public List<string> BusinessesNamesList { get; set; }
+
+        [DataMember]
+        public string Descriptions { get; set; }
+
+        [DataMember]
+        public List<string> DescriptionsList { get; set; }
+
+        [DataMember]
+        public string Addresses { get; set; }
+
+        [DataMember]
+        public List<string> AddressesList { get; set; }
+
+        [DataMember]
+        public int RegionId { get; set; }
     }
 }

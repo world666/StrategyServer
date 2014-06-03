@@ -19,19 +19,13 @@ namespace DataRepository.Services.DataBaseService
             {
                 regions = repoUnit.States.FindFirstBy(s => s.Id == stateId).Regions.ToList();
             }
-            return regions.Select(r => new Region()
+            regions.ForEach(r =>
             {
-                Id = r.Id,
-                RegionsNamesList = new List<string>() { r.RegionsNamesList[language] },
-                StateId = r.StateId,
-                ProfitTax = r.ProfitTax,
-                GrossProfitTax = r.GrossProfitTax,
-                Industry = r.Industry,
-                Cx = r.Cx,
-                ServicesSector = r.ServicesSector,
-                Trade = r.Trade,
-                Tourism = r.Tourism
-            }).ToList();
+                r.RegionsNamesList = new List<string>() { r.RegionsNamesList[language] };
+                r.State = null;
+                r.Businesses = null;
+            });
+            return regions;
         }
 
         public List<Region> GetRegions(int stateId)
@@ -41,19 +35,12 @@ namespace DataRepository.Services.DataBaseService
             {
                 regions = repoUnit.States.FindFirstBy(s => s.Id == stateId).Regions.ToList();
             }
-            return regions.Select(r => new Region()
+            regions.ForEach(r =>
             {
-                Id = r.Id,
-                RegionsNamesList = r.RegionsNamesList,
-                StateId = r.StateId,
-                ProfitTax = r.ProfitTax,
-                GrossProfitTax = r.GrossProfitTax,
-                Industry = r.Industry,
-                Cx = r.Cx,
-                ServicesSector = r.ServicesSector,
-                Trade = r.Trade,
-                Tourism = r.Tourism
-            }).ToList();
+                r.State = null;
+                r.Businesses = null;
+            });
+            return regions;
         }
 
         public void AddRegions(List<Region> newRegions)

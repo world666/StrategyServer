@@ -22,7 +22,7 @@ namespace StrategyServices.States
         void AddStates(List<StateData> statesList);
 
         [OperationContract]
-        void EditStates(List<StateData> states);
+        void EditStates(List<StateData> statesList);
 
         [OperationContract]
         void DeleteStates(List<int> stateIds);
@@ -36,6 +36,9 @@ namespace StrategyServices.States
 
         [DataMember]
         public string StatesNames { get; set; }
+
+        [DataMember]
+        public List<string> StatesNamesList { get; set; }
 
         [DataMember]
         public double CountryDevelopmentCoef { get; set; }

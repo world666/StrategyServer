@@ -18,14 +18,14 @@ namespace DataRepository.Services.DataBaseService
             {
                 businesses = repoUnit.Regions.FindFirstBy(r => r.Id == regionId).Businesses.ToList();
             }
-            return businesses.Select(b => new Business()
+            businesses.ForEach(b =>
             {
-                Id = b.Id,
-                BusinessesNamesList = new List<string>() { b.BusinessesNamesList[language] },
-                DescriptionsList = new List<string>() { b.DescriptionsList[language] },
-                AddressesList = new List<string>() { b.AddressesList[language] },
-                RegionId = b.RegionId     
-            }).ToList();
+                b.BusinessesNamesList = new List<string>() { b.BusinessesNamesList[language] };
+                b.DescriptionsList = new List<string>() { b.DescriptionsList[language] };
+                b.AddressesList = new List<string>() { b.AddressesList[language] };
+                b.Region = null;
+            });
+            return businesses;
         }
 
         public List<Business> GetBusinesses(int regionId)
@@ -35,14 +35,11 @@ namespace DataRepository.Services.DataBaseService
             {
                 businesses = repoUnit.Regions.FindFirstBy(r => r.Id == regionId).Businesses.ToList();
             }
-            return businesses.Select(b => new Business()
+            businesses.ForEach(b =>
             {
-                Id = b.Id,
-                BusinessesNamesList = b.BusinessesNamesList,
-                DescriptionsList = b.DescriptionsList,
-                AddressesList = b.AddressesList,
-                RegionId = b.RegionId
-            }).ToList();
+                b.Region = null;
+            });
+            return businesses;
         }
 
         public void AddBusinesses(List<Business> newBusinesses)

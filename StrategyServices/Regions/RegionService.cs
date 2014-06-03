@@ -14,20 +14,78 @@ namespace StrategyServices.Regions
         {
             _regionsService = new RegionsService();
         }
-        public List<Region> GetRegions(Language lang, int stateId)
+        public List<RegionData> GetRegions(Language lang, int stateId)
         {
-            return _regionsService.GetRegions(lang, stateId);
+            var regions = _regionsService.GetRegions(lang, stateId);
+            var retRegion = regions.Select(st => new RegionData
+            {
+                Id = st.Id,
+                RegionsNames = st.RegionsNames,
+                RegionsNamesList = st.RegionsNamesList,
+                StateId = st.StateId,
+                ProfitTax = st.ProfitTax,
+                GrossProfitTax = st.GrossProfitTax,
+                Industry = st.Industry,
+                Cx = st.Cx,
+                ServicesSector = st.ServicesSector,
+                Trade = st.Trade,
+                Tourism = st.Tourism
+            }).ToList();
+            return retRegion;
         }
-        public List<Region> GetRegions(int stateId)
+        public List<RegionData> GetRegions(int stateId)
         {
-            return _regionsService.GetRegions(stateId);
+            var regions = _regionsService.GetRegions(stateId);
+            var retRegion = regions.Select(st => new RegionData
+            {
+                Id = st.Id,
+                RegionsNames = st.RegionsNames,
+                RegionsNamesList = st.RegionsNamesList,
+                StateId = st.StateId,
+                ProfitTax = st.ProfitTax,
+                GrossProfitTax = st.GrossProfitTax,
+                Industry = st.Industry,
+                Cx = st.Cx,
+                ServicesSector = st.ServicesSector,
+                Trade = st.Trade,
+                Tourism = st.Tourism
+            }).ToList();
+            return retRegion;
         }
-        public void AddRegions(List<Region> newRegions)
+        public void AddRegions(List<RegionData> regionsList)
         {
-            _regionsService.AddRegions(newRegions);
+            var regions = regionsList.Select(st => new Region
+            {
+                Id = st.Id,
+                RegionsNames = st.RegionsNames,
+                RegionsNamesList = st.RegionsNamesList,
+                StateId = st.StateId,
+                ProfitTax = st.ProfitTax,
+                GrossProfitTax = st.GrossProfitTax,
+                Industry = st.Industry,
+                Cx = st.Cx,
+                ServicesSector = st.ServicesSector,
+                Trade = st.Trade,
+                Tourism = st.Tourism
+            }).ToList();
+            _regionsService.AddRegions(regions);
         }
-        public void EditRegions(List<Region> regions)
+        public void EditRegions(List<RegionData> regionsList)
         {
+            var regions = regionsList.Select(st => new Region
+            {
+                Id = st.Id,
+                RegionsNames = st.RegionsNames,
+                RegionsNamesList = st.RegionsNamesList,
+                StateId = st.StateId,
+                ProfitTax = st.ProfitTax,
+                GrossProfitTax = st.GrossProfitTax,
+                Industry = st.Industry,
+                Cx = st.Cx,
+                ServicesSector = st.ServicesSector,
+                Trade = st.Trade,
+                Tourism = st.Tourism
+            }).ToList();
             _regionsService.EditRegions(regions);
         }
         public void DeleteRegions(List<int> regionIds)
