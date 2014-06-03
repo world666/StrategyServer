@@ -18,15 +18,12 @@ namespace DataRepository.Services.DataBaseService
             {
                 allstates.AddRange(repoUnit.States.Load());
             }
-            return allstates.Select(st => new State()
+            allstates.ForEach(st =>
             {
-                Id = st.Id,
-                StatesNamesList = new List<string>() { st.StatesNamesList[language] },
-                CountryDevelopmentCoef = st.CountryDevelopmentCoef,
-                CountryCurrencyUnit = st.CountryCurrencyUnit,
-                NewsInfluenceCoef = st.NewsInfluenceCoef,
-                LicensesExcises = st.LicensesExcises
-            }).ToList();
+                st.StatesNamesList = new List<string>() {st.StatesNamesList[language]};
+                st.Regions = null;
+            });
+            return allstates;
         }
 
         public List<State> GetStates()
@@ -36,15 +33,11 @@ namespace DataRepository.Services.DataBaseService
             {
                 allstates.AddRange(repoUnit.States.Load());
             }
-            return allstates.Select(st => new State()
+            allstates.ForEach(st =>
             {
-                Id = st.Id,
-                StatesNamesList = st.StatesNamesList,
-                CountryDevelopmentCoef = st.CountryDevelopmentCoef,
-                CountryCurrencyUnit = st.CountryCurrencyUnit,
-                NewsInfluenceCoef = st.NewsInfluenceCoef,
-                LicensesExcises = st.LicensesExcises
-            }).ToList();
+                st.Regions = null;
+            });
+            return allstates;
         }
 
         public void AddStates(List<State> newStates)
