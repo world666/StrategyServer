@@ -24,6 +24,7 @@ namespace DataRepository.Services.DataBaseService
                 b.DescriptionsList = new List<string>() { b.DescriptionsList[language] };
                 b.AddressesList = new List<string>() { b.AddressesList[language] };
                 b.Region = null;
+                b.Actions = null;
             });
             return businesses;
         }
@@ -38,6 +39,7 @@ namespace DataRepository.Services.DataBaseService
             businesses.ForEach(b =>
             {
                 b.Region = null;
+                b.Actions = null;
             });
             return businesses;
         }

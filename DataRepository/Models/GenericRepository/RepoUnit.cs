@@ -12,6 +12,8 @@ namespace DataRepository.Models.GenericRepository
         private IDataRepository<State> _States;
         private IDataRepository<Region> _Regions;
         private IDataRepository<Business> _Businesses;
+        private IDataRepository<Action> _Actions;
+        private IDataRepository<Event> _Events;
 
         private ServerContext getContext()
         {
@@ -42,6 +44,16 @@ namespace DataRepository.Models.GenericRepository
         public IDataRepository<Business> Businesses
         {
             get { return _Businesses ?? (_Businesses = getRepository<Business>()); }
+        }
+
+        public IDataRepository<Action> Actions
+        {
+            get { return _Actions ?? (_Actions = getRepository<Action>()); }
+        }
+
+        public IDataRepository<Event> Events
+        {
+            get { return _Events ?? (_Events = getRepository<Event>()); }
         }
 
         public void Commit()
