@@ -24,7 +24,7 @@ namespace StrategyServices.States
                 Id = st.Id,
                 StatesNames = st.StatesNames,
                 StatesNamesList = st.StatesNamesList,
-                CountryDevelopmentCoef = st.CountryDevelopmentCoef,
+                 CountryDevelopmentCoef = st.CountryDevelopmentCoef,
                 CountryCurrencyUnit = st.CountryCurrencyUnit,
                 NewsInfluenceCoef = st.NewsInfluenceCoef,
                 LicensesExcises = st.LicensesExcises
@@ -52,7 +52,6 @@ namespace StrategyServices.States
             {
                 Id = st.Id,
                 StatesNames = st.StatesNames,
-                StatesNamesList = st.StatesNamesList,
                 CountryDevelopmentCoef = st.CountryDevelopmentCoef,
                 CountryCurrencyUnit = st.CountryCurrencyUnit,
                 NewsInfluenceCoef = st.NewsInfluenceCoef,
@@ -66,7 +65,6 @@ namespace StrategyServices.States
             {
                 Id = st.Id,
                 StatesNames = st.StatesNames,
-                StatesNamesList = st.StatesNamesList,
                 CountryDevelopmentCoef = st.CountryDevelopmentCoef,
                 CountryCurrencyUnit = st.CountryCurrencyUnit,
                 NewsInfluenceCoef = st.NewsInfluenceCoef,

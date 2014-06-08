@@ -58,7 +58,6 @@ namespace StrategyServices.Regions
             {
                 Id = st.Id,
                 RegionsNames = st.RegionsNames,
-                RegionsNamesList = st.RegionsNamesList,
                 StateId = st.StateId,
                 ProfitTax = st.ProfitTax,
                 GrossProfitTax = st.GrossProfitTax,
@@ -76,7 +75,6 @@ namespace StrategyServices.Regions
             {
                 Id = st.Id,
                 RegionsNames = st.RegionsNames,
-                RegionsNamesList = st.RegionsNamesList,
                 StateId = st.StateId,
                 ProfitTax = st.ProfitTax,
                 GrossProfitTax = st.GrossProfitTax,
