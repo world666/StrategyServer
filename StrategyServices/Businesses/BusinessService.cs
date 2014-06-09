@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DataRepository.Models;
@@ -8,6 +9,7 @@ using DataRepository.Services.DataBaseService;
 
 namespace StrategyServices.Businesses
 {
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class BusinessService : IBusinessService
     {
         public BusinessService()
@@ -52,11 +54,8 @@ namespace StrategyServices.Businesses
             {
                 Id = st.Id,
                 BusinessesNames = st.BusinessesNames,
-                BusinessesNamesList = st.BusinessesNamesList,
                 Descriptions = st.Descriptions,
-                DescriptionsList = st.DescriptionsList,
                 Addresses = st.Addresses,
-                AddressesList = st.AddressesList,
                 RegionId = st.RegionId
             }).ToList();
             _businessesService.AddBusinesses(businesses);
@@ -67,11 +66,8 @@ namespace StrategyServices.Businesses
             {
                 Id = st.Id,
                 BusinessesNames = st.BusinessesNames,
-                BusinessesNamesList = st.BusinessesNamesList,
                 Descriptions = st.Descriptions,
-                DescriptionsList = st.DescriptionsList,
                 Addresses = st.Addresses,
-                AddressesList = st.AddressesList,
                 RegionId = st.RegionId
             }).ToList();
             _businessesService.EditBusinesses(businesses);

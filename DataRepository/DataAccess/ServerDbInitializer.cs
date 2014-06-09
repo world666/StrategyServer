@@ -37,12 +37,14 @@ namespace DataRepository.DataAccess
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Plant", "Завод"}, 
-                                    DescriptionsList = new List<string> {"Metallurgical works", "Металлургический завод"}
+                                    DescriptionsList = new List<string> {"Metallurgical works", "Металлургический завод"},
+                                    AddressesList = new List<string> {"Metallurgical works", "Металлургический завод"}
                                 },
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Mine", "Шахта"}, 
-                                    DescriptionsList = new List<string> {"Coalmine", "Угольная шахта"}
+                                    DescriptionsList = new List<string> {"Coalmine", "Угольная шахта"},
+                                    AddressesList = new List<string> {"Metallurgical works", "Металлургический завод"}
                                 }
                             }
                         },
@@ -54,7 +56,8 @@ namespace DataRepository.DataAccess
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Stadium", "Стадион"}, 
-                                    DescriptionsList = new List<string> {"Olympic Stadium", "Олимпийский стадион"}
+                                    DescriptionsList = new List<string> {"Olympic Stadium", "Олимпийский стадион"},
+                                    AddressesList = new List<string> {"Metallurgical works", "Металлургический завод"}
                                 }
                             }
                         }
@@ -73,12 +76,14 @@ namespace DataRepository.DataAccess
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Restaurant", "Ресторан"}, 
-                                    DescriptionsList = new List<string> {"Italian cuisine", "Итальянская кухня"}
+                                    DescriptionsList = new List<string> {"Italian cuisine", "Итальянская кухня"},
+                                    AddressesList = new List<string> {"Metallurgical works", "Металлургический завод"}
                                 },
                                 new Business
                                 {
                                     BusinessesNamesList = new List<string> {"Shopping center", "Торговый центр"}, 
-                                    DescriptionsList = new List<string> {"London's biggest shopping center", "Крупнейший торговый центр Лондона"}
+                                    DescriptionsList = new List<string> {"London's biggest shopping center", "Крупнейший торговый центр Лондона"},
+                                    AddressesList = new List<string> {"Metallurgical works", "Металлургический завод"}
                                 }
                             }
                         }
