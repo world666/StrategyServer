@@ -14,14 +14,24 @@ namespace DataRepository.Services.DataBaseService
         {
             var language = Convert.ToInt32(lang);
             var allstates = new List<State>();
+            var langCount = Enum.GetNames(typeof (Language)).Length;
+            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 allstates.AddRange(repoUnit.States.Load());
             }
             allstates.ForEach(st =>
             {
-                st.StatesNamesList = new List<string>() {st.StatesNamesList[language]};
-                st.Regions = null;
+                if (st.StatesNamesList.Count != langCount)
+                {
+                    allstates[i] = null;
+                }
+                else
+                {
+                    st.StatesNamesList = new List<string>() { st.StatesNamesList[language] };
+                    st.Regions = null;
+                }
+                i++;
             });
             return allstates;
         }
@@ -35,6 +45,8 @@ namespace DataRepository.Services.DataBaseService
             }
             allstates.ForEach(st =>
             {
+                if (st.StatesNames == null)
+                    st.StatesNames = "";
                 st.Regions = null;
             });
             return allstates;

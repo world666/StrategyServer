@@ -15,15 +15,25 @@ namespace DataRepository.Services.DataBaseService
         {
             var language = Convert.ToInt32(lang);
             var regions = new List<Region>();
+            var langCount = Enum.GetNames(typeof(Language)).Length;
+            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 regions = repoUnit.States.FindFirstBy(s => s.Id == stateId).Regions.ToList();
             }
             regions.ForEach(r =>
             {
-                r.RegionsNamesList = new List<string>() { r.RegionsNamesList[language] };
-                r.State = null;
-                r.Businesses = null;
+                if (r.RegionsNamesList.Count != langCount)
+                {
+                    regions[i] = null;
+                }
+                else
+                {
+                    r.RegionsNamesList = new List<string>() {r.RegionsNamesList[language]};
+                    r.State = null;
+                    r.Businesses = null;
+                }
+                i++;
             });
             return regions;
         }
@@ -37,6 +47,8 @@ namespace DataRepository.Services.DataBaseService
             }
             regions.ForEach(r =>
             {
+                if (r.RegionsNames == null)
+                    r.RegionsNames = "";
                 r.State = null;
                 r.Businesses = null;
             });

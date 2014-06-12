@@ -81,5 +81,30 @@ namespace UnitTests.DataRepositoryTests
             Assert.AreEqual(rez, 6);
         }
 
+        [Test]
+        public void Test4LangExeptionStates()
+        {
+            int rez = 0;
+            var statesService = new StatesService();
+            var newStates = new List<State>
+            {
+                new State{StatesNamesList = new List<string> {"Italy"}},
+                new State{StatesNamesList = new List<string> {"Germany", "Германия"}}
+            };
+            statesService.AddStates(newStates);
+            var states = statesService.GetStates(Language.Russian);
+            if (states.Count == 4)
+                rez++;
+            if (states[2] == null)
+                rez++;
+            statesService.DeleteStates(new List<int> {states[3].Id });
+            states = statesService.GetStates(Language.Russian);
+            if (states.Count == 3)
+                rez++;
+            if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия")
+                rez++;
+            Assert.AreEqual(rez, 4);
+        }
+
     }
 }

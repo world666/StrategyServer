@@ -14,17 +14,27 @@ namespace DataRepository.Services.DataBaseService
         {
             var language = Convert.ToInt32(lang);
             var businesses = new List<Business>();
+            var langCount = Enum.GetNames(typeof(Language)).Length;
+            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 businesses = repoUnit.Regions.FindFirstBy(r => r.Id == regionId).Businesses.ToList();
             }
             businesses.ForEach(b =>
             {
-                b.BusinessesNamesList = new List<string>() { b.BusinessesNamesList[language] };
-                b.DescriptionsList = new List<string>() { b.DescriptionsList[language] };
-                b.AddressesList = new List<string>() { b.AddressesList[language] };
-                b.Region = null;
-                b.Actions = null;
+                if (b.BusinessesNamesList.Count != langCount || b.DescriptionsList.Count != langCount || b.AddressesList.Count != langCount)
+                {
+                    businesses[i] = null;
+                }
+                else
+                {
+                    b.BusinessesNamesList = new List<string>() {b.BusinessesNamesList[language]};
+                    b.DescriptionsList = new List<string>() {b.DescriptionsList[language]};
+                    b.AddressesList = new List<string>() {b.AddressesList[language]};
+                    b.Region = null;
+                    b.Actions = null;
+                }
+                i++;
             });
             return businesses;
         }
@@ -38,6 +48,12 @@ namespace DataRepository.Services.DataBaseService
             }
             businesses.ForEach(b =>
             {
+                if (b.BusinessesNames == null)
+                    b.BusinessesNames = "";
+                if (b.Descriptions == null)
+                    b.Descriptions = "";
+                if (b.Addresses == null)
+                    b.Addresses = "";
                 b.Region = null;
                 b.Actions = null;
             });
