@@ -16,9 +16,9 @@ namespace StrategyServices.States
         {
             _statesService = new StatesService();
         }
-        public List<StateData> GetStates(Language lang)
+        public List<StateData> GetStates(int languageId)
         {
-            var states = _statesService.GetStates(lang);
+            var states = _statesService.GetStates(languageId);
             var retState = states.Select(st => new StateData
             {
                 Id = st.Id,

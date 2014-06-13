@@ -10,11 +10,11 @@ namespace DataRepository.Services.DataBaseService
 {
     public class StatesService
     {
-        public List<State> GetStates(Language lang)
+        public List<State> GetStates(int languageId)
         {
-            var language = Convert.ToInt32(lang);
             var allstates = new List<State>();
-            var langCount = Enum.GetNames(typeof (Language)).Length;
+            var languagesService = new LanguagesService();
+            var langCount = languagesService.GetLanguagesCount();
             int i = 0;
             using (var repoUnit = new RepoUnit())
             {
@@ -22,13 +22,17 @@ namespace DataRepository.Services.DataBaseService
             }
             allstates.ForEach(st =>
             {
-                if (st.StatesNamesList.Count != langCount)
+                if (st.StatesNames == null)
+                {
+                    allstates[i] = null;
+                }
+                else if (st.StatesNamesList.Count != langCount)
                 {
                     allstates[i] = null;
                 }
                 else
                 {
-                    st.StatesNamesList = new List<string>() { st.StatesNamesList[language] };
+                    st.StatesNamesList = new List<string>() { st.StatesNamesList[languageId] };
                     st.Regions = null;
                 }
                 i++;

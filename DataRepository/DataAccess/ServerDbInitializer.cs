@@ -18,9 +18,16 @@ namespace DataRepository.DataAccess
             //Init Versions table
             var versions = new List<DataRepository.Models.Version>
                 {
-                    new DataRepository.Models.Version {VersionName = "BusinessStartegy v1.0"},
+                    new DataRepository.Models.Version {VersionName = "BusinessStartegy v1.0"}
                 };
             versions.ForEach(v => context.Versions.Add(v));
+            //Init Languages table
+            var languages = new List<Language>
+                {
+                    new Language {LanguageName = "English"},
+                    new Language {LanguageName = "Russian"}
+                };
+            languages.ForEach(l => context.Languages.Add(l));
             //Init States table
             var states = new List<State>
             {

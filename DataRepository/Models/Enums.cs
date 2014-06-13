@@ -12,8 +12,8 @@
     {
         Actual, OutDated
     }
-    public enum Language
+    /*public enum Language
     {
         English, Russian
-    }
+    } */
 }

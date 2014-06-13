@@ -54,6 +54,8 @@
     <Compile Include="Businesses\IBusinessService.cs" />
     <Compile Include="Events\EventService.cs" />
     <Compile Include="Events\IEventService.cs" />
+    <Compile Include="Languages\ILanguageService.cs" />
+    <Compile Include="Languages\LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions\IRegionService.cs" />
     <Compile Include="Regions\RegionService.cs" />

@@ -7,6 +7,7 @@ namespace DataRepository.DataAccess
     {
         public IDbSet<User> Users { get; set; }
         public IDbSet<Version> Versions { get; set; }
+        public IDbSet<Language> Languages { get; set; }
         public IDbSet<State> States { get; set; }
         public IDbSet<Region> Regions { get; set; }
         public IDbSet<Business> Businesses { get; set; }

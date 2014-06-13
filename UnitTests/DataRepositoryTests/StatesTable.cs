@@ -17,7 +17,7 @@ namespace UnitTests.DataRepositoryTests
         {
             int rez = 0;
             var statesService = new StatesService();
-            var states = statesService.GetStates(Language.Russian);
+            var states = statesService.GetStates(1);
             if (states[0].StatesNames == "Украина" && states[1].StatesNames == "Англия")
                 rez++;
             if (states[0].Id == 1 && states[1].Id == 2)
@@ -40,13 +40,13 @@ namespace UnitTests.DataRepositoryTests
                 new State{StatesNamesList = new List<string> {"Germany", "Германия"}}
             };
             statesService.AddStates(newStates);
-            var states = statesService.GetStates(Language.Russian);
+            var states = statesService.GetStates(1);
             if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия" && states[2].StatesNamesList[0] == "Россия" && states[3].StatesNamesList[0] == "Германия")
                 rez++;
             if (states.Count == 4)
                 rez++;
             statesService.DeleteStates(new List<int> { states[2].Id, states[3].Id });
-            states = statesService.GetStates(Language.Russian);
+            states = statesService.GetStates(1);
             if (states.Count == 2)
                 rez++;
             if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия")
@@ -92,13 +92,13 @@ namespace UnitTests.DataRepositoryTests
                 new State{StatesNamesList = new List<string> {"Germany", "Германия"}}
             };
             statesService.AddStates(newStates);
-            var states = statesService.GetStates(Language.Russian);
+            var states = statesService.GetStates(1);
             if (states.Count == 4)
                 rez++;
             if (states[2] == null)
                 rez++;
             statesService.DeleteStates(new List<int> {states[3].Id });
-            states = statesService.GetStates(Language.Russian);
+            states = statesService.GetStates(1);
             if (states.Count == 3)
                 rez++;
             if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия")

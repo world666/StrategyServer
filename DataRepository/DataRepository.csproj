@@ -96,6 +96,7 @@
     <Compile Include="Models\GenericRepository\IDataRepository.cs" />
     <Compile Include="Models\GenericRepository\IEntityId.cs" />
     <Compile Include="Models\GenericRepository\RepoUnit.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Services\DataBaseService\ActionsService.cs" />
     <Compile Include="Services\DataBaseService\BusinessesService.cs" />
     <Compile Include="Services\DataBaseService\EventsService.cs" />
+    <Compile Include="Services\DataBaseService\LanguagesService.cs" />
     <Compile Include="Services\DataBaseService\RegionsService.cs" />
     <Compile Include="Services\DataBaseService\StatesService.cs" />
     <Compile Include="Services\DataBaseService\UsersService.cs" />

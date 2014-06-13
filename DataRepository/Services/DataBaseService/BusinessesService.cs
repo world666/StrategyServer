@@ -10,11 +10,11 @@ namespace DataRepository.Services.DataBaseService
 {
     public class BusinessesService
     {
-        public List<Business> GetBusinesses(Language lang, int regionId)
+        public List<Business> GetBusinesses(int languageId, int regionId)
         {
-            var language = Convert.ToInt32(lang);
             var businesses = new List<Business>();
-            var langCount = Enum.GetNames(typeof(Language)).Length;
+            var languagesService = new LanguagesService();
+            var langCount = languagesService.GetLanguagesCount();
             int i = 0;
             using (var repoUnit = new RepoUnit())
             {
@@ -22,15 +22,19 @@ namespace DataRepository.Services.DataBaseService
             }
             businesses.ForEach(b =>
             {
-                if (b.BusinessesNamesList.Count != langCount || b.DescriptionsList.Count != langCount || b.AddressesList.Count != langCount)
+                if (b.BusinessesNames == null || b.Descriptions == null || b.Addresses == null)
+                {
+                    businesses[i] = null;
+                }
+                else if (b.BusinessesNamesList.Count != langCount || b.DescriptionsList.Count != langCount || b.AddressesList.Count != langCount)
                 {
                     businesses[i] = null;
                 }
                 else
                 {
-                    b.BusinessesNamesList = new List<string>() {b.BusinessesNamesList[language]};
-                    b.DescriptionsList = new List<string>() {b.DescriptionsList[language]};
-                    b.AddressesList = new List<string>() {b.AddressesList[language]};
+                    b.BusinessesNamesList = new List<string>() { b.BusinessesNamesList[languageId] };
+                    b.DescriptionsList = new List<string>() { b.DescriptionsList[languageId] };
+                    b.AddressesList = new List<string>() { b.AddressesList[languageId] };
                     b.Region = null;
                     b.Actions = null;
                 }

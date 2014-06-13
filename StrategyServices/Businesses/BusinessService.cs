@@ -16,9 +16,9 @@ namespace StrategyServices.Businesses
         {
             _businessesService = new BusinessesService();
         }
-        public List<BusinessData> GetBusinesses(Language lang, int regionId)
+        public List<BusinessData> GetBusinesses(int languageId, int regionId)
         {
-            var businesses = _businessesService.GetBusinesses(lang, regionId);
+            var businesses = _businessesService.GetBusinesses(languageId, regionId);
             var retBusiness = businesses.Select(st => new BusinessData
             {
                 Id = st.Id,

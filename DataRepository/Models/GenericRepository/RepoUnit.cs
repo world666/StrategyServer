@@ -9,6 +9,7 @@ namespace DataRepository.Models.GenericRepository
         private ServerContext _context;
         private IDataRepository<User> _Users;
         private IDataRepository<Version> _Versions;
+        private IDataRepository<Language> _Languages;
         private IDataRepository<State> _States;
         private IDataRepository<Region> _Regions;
         private IDataRepository<Business> _Businesses;
@@ -29,6 +30,11 @@ namespace DataRepository.Models.GenericRepository
         public IDataRepository<Version> Versions
         {
             get { return _Versions ?? (_Versions = getRepository<Version>()); }
+        }
+
+        public IDataRepository<Language> Languages
+        {
+            get { return _Languages ?? (_Languages = getRepository<Language>()); }
         }
 
         public IDataRepository<State> States

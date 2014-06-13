@@ -14,9 +14,9 @@ namespace StrategyServices.Regions
         {
             _regionsService = new RegionsService();
         }
-        public List<RegionData> GetRegions(Language lang, int stateId)
+        public List<RegionData> GetRegions(int languageId, int stateId)
         {
-            var regions = _regionsService.GetRegions(lang, stateId);
+            var regions = _regionsService.GetRegions(languageId, stateId);
             var retRegion = regions.Select(st => new RegionData
             {
                 Id = st.Id,
