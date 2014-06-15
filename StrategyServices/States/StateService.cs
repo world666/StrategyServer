@@ -19,7 +19,7 @@ namespace StrategyServices.States
         public List<StateData> GetStates(int languageId)
         {
             var states = _statesService.GetStates(languageId);
-            var retState = states.Select(st => new StateData
+            var retState = states.Where(s => s!= null).Select(st => new StateData
             {
                 Id = st.Id,
                 StatesNames = st.StatesNames,

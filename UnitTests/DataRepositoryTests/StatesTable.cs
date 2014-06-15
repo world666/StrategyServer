@@ -12,6 +12,7 @@ namespace UnitTests.DataRepositoryTests
     [TestFixture]
     class StatesTable
     {
+
         [Test]
         public void Test1GetStates()
         {

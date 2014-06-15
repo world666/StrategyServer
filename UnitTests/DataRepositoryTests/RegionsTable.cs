@@ -12,6 +12,7 @@ namespace UnitTests.DataRepositoryTests
     [TestFixture]
     class RegionsTable
     {
+        
         [Test]
         public void Test1Getregions()
         {
