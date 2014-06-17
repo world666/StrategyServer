@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 using DataRepository.Models;
 using DataRepository.Services.DataBaseService;
 using NUnit.Framework;
+using StrategyServices.States;
 
 namespace UnitTests.DataRepositoryTests
 {
     [TestFixture]
     class StatesTable
     {
+        [Test]
+        public void Test3GetStates()
+        {
+            StateService stateService = new StateService();
+            var st = stateService.GetStates(1);
+            var s = st.ToList();
+        }
+
 
         [Test]
         public void Test1GetStates()

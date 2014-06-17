@@ -20,24 +20,17 @@ namespace DataRepository.Services.DataBaseService
             {
                 allstates.AddRange(repoUnit.States.Load());
             }
-            allstates.ForEach(st =>
+            var retStates = new List<State>();
+            foreach (var st in allstates)
             {
-                if (st.StatesNames == null)
-                {
-                    allstates[i] = null;
-                }
-                else if (st.StatesNamesList.Count != langCount)
-                {
-                    allstates[i] = null;
-                }
-                else
+                if (st.StatesNamesList.Count == langCount && st.StatesNames != null)
                 {
                     st.StatesNamesList = new List<string>() { st.StatesNamesList[languageId] };
                     st.Regions = null;
+                    retStates.Add(st);
                 }
-                i++;
-            });
-            return allstates;
+            }
+            return retStates;
         }
 
         public List<State> GetStates()
