@@ -13,14 +13,6 @@ namespace UnitTests.DataRepositoryTests
     [TestFixture]
     class StatesTable
     {
-        [Test]
-        public void Test3GetStates()
-        {
-            StateService stateService = new StateService();
-            var st = stateService.GetStates(1);
-            var s = st.ToList();
-        }
-
 
         [Test]
         public void Test1GetStates()
@@ -103,17 +95,15 @@ namespace UnitTests.DataRepositoryTests
             };
             statesService.AddStates(newStates);
             var states = statesService.GetStates(1);
-            if (states.Count == 4)
-                rez++;
-            if (states[2] == null)
-                rez++;
-            statesService.DeleteStates(new List<int> {states[3].Id });
-            states = statesService.GetStates(1);
             if (states.Count == 3)
+                rez++;
+            statesService.DeleteStates(new List<int> {states[2].Id });
+            states = statesService.GetStates(1);
+            if (states.Count == 2)
                 rez++;
             if (states[0].StatesNamesList[0] == "Украина" && states[1].StatesNamesList[0] == "Англия")
                 rez++;
-            Assert.AreEqual(rez, 4);
+            Assert.AreEqual(rez, 3);
         }
 
     }

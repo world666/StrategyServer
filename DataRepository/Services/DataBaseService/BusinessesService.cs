@@ -15,32 +15,27 @@ namespace DataRepository.Services.DataBaseService
             var businesses = new List<Business>();
             var languagesService = new LanguagesService();
             var langCount = languagesService.GetLanguagesCount();
-            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 businesses = repoUnit.Regions.FindFirstBy(r => r.Id == regionId).Businesses.ToList();
             }
-            businesses.ForEach(b =>
+            var retBusinesses = new List<Business>();
+            foreach (var b in businesses)
             {
-                if (b.BusinessesNames == null || b.Descriptions == null || b.Addresses == null)
+                if (b.BusinessesNames != null && b.Descriptions != null && b.Addresses != null)
                 {
-                    businesses[i] = null;
+                    if (b.BusinessesNamesList.Count == langCount && b.DescriptionsList.Count == langCount && b.AddressesList.Count == langCount)
+                    {
+                        b.BusinessesNamesList = new List<string>() {b.BusinessesNamesList[languageId]};
+                        b.DescriptionsList = new List<string>() {b.DescriptionsList[languageId]};
+                        b.AddressesList = new List<string>() {b.AddressesList[languageId]};
+                        b.Region = null;
+                        b.Actions = null;
+                        retBusinesses.Add(b);
+                    }
                 }
-                else if (b.BusinessesNamesList.Count != langCount || b.DescriptionsList.Count != langCount || b.AddressesList.Count != langCount)
-                {
-                    businesses[i] = null;
-                }
-                else
-                {
-                    b.BusinessesNamesList = new List<string>() { b.BusinessesNamesList[languageId] };
-                    b.DescriptionsList = new List<string>() { b.DescriptionsList[languageId] };
-                    b.AddressesList = new List<string>() { b.AddressesList[languageId] };
-                    b.Region = null;
-                    b.Actions = null;
-                }
-                i++;
-            });
-            return businesses;
+            }
+            return retBusinesses;
         }
 
         public List<Business> GetBusinesses(int regionId)

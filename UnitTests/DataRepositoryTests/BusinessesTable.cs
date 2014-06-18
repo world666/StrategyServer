@@ -55,19 +55,25 @@ namespace UnitTests.DataRepositoryTests
             };
             businessesService.AddBusinesses(newBusinesses);
             var businesses = businessesService.GetBusinesses(1, 2);
-            if (businesses.Count == 3)
+            var allbusinesses = businessesService.GetBusinesses(2);
+            if (allbusinesses.Count == 3)
                 rez++;
-            if (businesses[0].BusinessesNamesList[0] == "Стадион" && businesses[1] == null && businesses[2].BusinessesNamesList[0] == "Новый завод")
-                rez++;
-            businessesService.DeleteBusinesses(new List<int> { businesses[2].Id });
-            businesses = businessesService.GetBusinesses(1, 2);
             if (businesses.Count == 2)
+                rez++;
+            if (businesses[0].BusinessesNamesList[0] == "Стадион" && businesses[1].BusinessesNamesList[0] == "Новый завод")
+                rez++;
+            businessesService.DeleteBusinesses(new List<int> { businesses[1].Id });
+            businesses = businessesService.GetBusinesses(1, 2);
+            allbusinesses = businessesService.GetBusinesses(2);
+            if (allbusinesses.Count == 2)
+                rez++;
+            if (businesses.Count == 1)
                 rez++;
             if (businesses[0].BusinessesNamesList[0] == "Стадион")
                 rez++;
             if (businesses[0].Descriptions == "Олимпийский стадион")
                 rez++;
-            Assert.AreEqual(rez, 5);
+            Assert.AreEqual(rez, 7);
         }
 
     }

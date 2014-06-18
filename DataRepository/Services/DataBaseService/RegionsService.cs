@@ -16,30 +16,25 @@ namespace DataRepository.Services.DataBaseService
             var regions = new List<Region>();
             var languagesService = new LanguagesService();
             var langCount = languagesService.GetLanguagesCount();
-            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 regions = repoUnit.States.FindFirstBy(s => s.Id == stateId).Regions.ToList();
             }
-            regions.ForEach(r =>
+            var retRegions = new List<Region>();
+            foreach (var r in regions)
             {
-                if (r.RegionsNames == null)
+                if (r.RegionsNames != null)
                 {
-                    regions[i] = null;
+                    if (r.RegionsNamesList.Count == langCount)
+                    {
+                        r.RegionsNamesList = new List<string>() {r.RegionsNamesList[languageId]};
+                        r.State = null;
+                        r.Businesses = null;
+                        retRegions.Add(r);
+                    }
                 }
-                else if (r.RegionsNamesList.Count != langCount)
-                {
-                    regions[i] = null;
-                }
-                else
-                {
-                    r.RegionsNamesList = new List<string>() { r.RegionsNamesList[languageId] };
-                    r.State = null;
-                    r.Businesses = null;
-                }
-                i++;
-            });
-            return regions;
+            }
+            return retRegions;
         }
 
         public List<Region> GetRegions(int stateId)

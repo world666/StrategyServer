@@ -15,7 +15,6 @@ namespace DataRepository.Services.DataBaseService
             var allstates = new List<State>();
             var languagesService = new LanguagesService();
             var langCount = languagesService.GetLanguagesCount();
-            int i = 0;
             using (var repoUnit = new RepoUnit())
             {
                 allstates.AddRange(repoUnit.States.Load());
@@ -23,11 +22,14 @@ namespace DataRepository.Services.DataBaseService
             var retStates = new List<State>();
             foreach (var st in allstates)
             {
-                if (st.StatesNamesList.Count == langCount && st.StatesNames != null)
+                if (st.StatesNames != null)
                 {
-                    st.StatesNamesList = new List<string>() { st.StatesNamesList[languageId] };
-                    st.Regions = null;
-                    retStates.Add(st);
+                    if (st.StatesNamesList.Count == langCount)
+                    {
+                        st.StatesNamesList = new List<string>() {st.StatesNamesList[languageId]};
+                        st.Regions = null;
+                        retStates.Add(st);
+                    }
                 }
             }
             return retStates;

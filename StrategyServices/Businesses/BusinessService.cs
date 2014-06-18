@@ -19,7 +19,7 @@ namespace StrategyServices.Businesses
         public List<BusinessData> GetBusinesses(int languageId, int regionId)
         {
             var businesses = _businessesService.GetBusinesses(languageId, regionId);
-            var retBusiness = businesses.Where(b => b!= null).Select(st => new BusinessData
+            var retBusiness = businesses.Select(st => new BusinessData
             {
                 Id = st.Id,
                 BusinessesNames = st.BusinessesNames,
