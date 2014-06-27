@@ -54,5 +54,6 @@ namespace DataRepository.Models
         public int RegionId { get; set; }
         public virtual Region Region { get; set; }
         public virtual ICollection<Action> Actions { get; set; }
+        public virtual ICollection<ActiveBusiness> ActiveBusinesses { get; set; }
     }
 }

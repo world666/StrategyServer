@@ -52,8 +52,8 @@
     <Compile Include="Actions\IActionService.cs" />
     <Compile Include="Businesses\BusinessService.cs" />
     <Compile Include="Businesses\IBusinessService.cs" />
-    <Compile Include="Events\EventService.cs" />
-    <Compile Include="Events\IEventService.cs" />
+    <Compile Include="News\NewService.cs" />
+    <Compile Include="News\INewService.cs" />
     <Compile Include="Languages\ILanguageService.cs" />
     <Compile Include="Languages\LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

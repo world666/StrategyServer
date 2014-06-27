@@ -14,7 +14,6 @@ namespace DataRepository.DataAccess
         {
             if (context == null)
                 context = new ServerContext();
-
             //Init Versions table
             var versions = new List<DataRepository.Models.Version>
                 {

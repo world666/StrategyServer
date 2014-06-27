@@ -12,7 +12,8 @@ namespace DataRepository.DataAccess
         public IDbSet<Region> Regions { get; set; }
         public IDbSet<Business> Businesses { get; set; }
         public IDbSet<Action> Actions { get; set; }
-        public IDbSet<Event> Events { get; set; }
+        public IDbSet<New> News { get; set; }
+        public IDbSet<ActiveBusiness> ActiveBusinesses { get; set; }
 
         public ServerContext()
             : base(GetConnectionName())

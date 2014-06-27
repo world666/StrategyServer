@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRepositoryTests\ActiveBusinessesTable.cs" />
     <Compile Include="DataRepositoryTests\BusinessesTable.cs" />
     <Compile Include="DataRepositoryTests\LanguagesTable.cs" />
     <Compile Include="DataRepositoryTests\RegionsTable.cs" />

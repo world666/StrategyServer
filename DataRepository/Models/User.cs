@@ -1,4 +1,5 @@
-﻿using DataRepository.Models.GenericRepository;
+﻿using System.Collections.Generic;
+using DataRepository.Models.GenericRepository;
 
 namespace DataRepository.Models
 {
@@ -9,5 +10,6 @@ namespace DataRepository.Models
         public string Login { get; set; }
         public string HashPassword { get; set; }
         public string SessionCode { get; set; }
+        public virtual ICollection<ActiveBusiness> ActiveBusinesses { get; set; }
     }
 }

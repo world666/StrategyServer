@@ -84,8 +84,8 @@
   <ItemGroup>
     <Content Include="actions.svc" />
     <Content Include="businesses.svc" />
-    <Content Include="events.svc" />
     <Content Include="languages.svc" />
+    <Content Include="news.svc" />
     <Content Include="regions.svc" />
     <Content Include="states.svc" />
     <Content Include="users.svc" />

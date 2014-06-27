@@ -7,7 +7,7 @@ using DataRepository.Models.GenericRepository;
 
 namespace DataRepository.Models
 {
-    public class Event : IEntityId
+    public class New : IEntityId
     {
         public int Id { get; set; }
         public string Descriptions { get; set; }

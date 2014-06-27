@@ -31,6 +31,7 @@ namespace DataRepository.Services.DataBaseService
                         b.AddressesList = new List<string>() {b.AddressesList[languageId]};
                         b.Region = null;
                         b.Actions = null;
+                        b.ActiveBusinesses = null;
                         retBusinesses.Add(b);
                     }
                 }
@@ -55,6 +56,7 @@ namespace DataRepository.Services.DataBaseService
                     b.Addresses = "";
                 b.Region = null;
                 b.Actions = null;
+                b.ActiveBusinesses = null;
             });
             return businesses;
         }
