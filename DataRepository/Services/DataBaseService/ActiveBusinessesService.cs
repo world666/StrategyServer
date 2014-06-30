@@ -43,6 +43,7 @@ namespace DataRepository.Services.DataBaseService
             {
                 b.User = null;
                 b.Business = null;
+                b.Actions = null;
             });
             return activeBusinesses;
         }

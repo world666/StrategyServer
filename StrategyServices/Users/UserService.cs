@@ -22,6 +22,20 @@ namespace StrategyServices.Users
         {
             return _usersService.Authorization(login, password, out sessionCode);
         }
+        public UserData GetUser(string login)
+        {
+            var user = _usersService.GetUser(login);
+            if (user == null)
+                return null;
+            var retUser = new UserData
+            {
+                Id = user.Id,
+                Login = user.Login,
+                HashPassword = user.HashPassword,
+                SessionCode = user.SessionCode
+            };
+            return retUser;
+        }
         public string GetCommandString(int i)
         {
             switch (i)
@@ -36,7 +50,7 @@ namespace StrategyServices.Users
                     return "Получил " + i.ToString();
             }
         }
-
+        
         private UsersService _usersService;
     }
 }

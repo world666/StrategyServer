@@ -17,5 +17,6 @@ namespace DataRepository.Models
         public bool LeasePurchase { get; set; }
         public virtual User User { get; set; }
         public virtual Business Business { get; set; }
+        public virtual ICollection<Action> Actions { get; set; }
     }
 }

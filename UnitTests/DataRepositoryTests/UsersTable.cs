@@ -76,5 +76,23 @@ namespace UnitTests.DataRepositoryTests
             }
             Assert.AreEqual(rez, 7);
         }
+
+        [Test]
+        public void Test4GetUser()
+        {
+            int rez = 0;
+            var usersService = new UsersService();
+            string sessionCode = "abc";
+            usersService.AddNewUser("user22", "1111", sessionCode);
+            if (usersService.AuthorizedUser("user22", "1111"))
+                rez++;
+            var user = usersService.GetUser("user22");
+            if (user.Login == "user22")
+                rez++;
+            usersService.DeleteUser("user22", "1111");
+            if (!usersService.AuthorizedUser("user22", "1111"))
+                rez++;
+            Assert.AreEqual(rez, 3);
+        }
     }
 }

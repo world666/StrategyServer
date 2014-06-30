@@ -21,19 +21,21 @@ namespace UnitTests.DataRepositoryTests
             string sessionCode = "abc";
             usersService.AddNewUser("user1", "1111", sessionCode);
             usersService.AddNewUser("user2", "2222", sessionCode);
+            var user1 = usersService.GetUser("user1");
+            var user2 = usersService.GetUser("user2");
             var newActiveBusinesses = new List<ActiveBusiness>
             {
-                new ActiveBusiness{UserId = 5, BusinessId = 1, LeasePurchase = true},
-                new ActiveBusiness{UserId = 6, BusinessId = 2, LeasePurchase = true},
-                new ActiveBusiness{UserId = 5, BusinessId = 3, LeasePurchase = true},
+                new ActiveBusiness{UserId = user1.Id, BusinessId = 1, LeasePurchase = true},
+                new ActiveBusiness{UserId = user2.Id, BusinessId = 2, LeasePurchase = true},
+                new ActiveBusiness{UserId = user1.Id, BusinessId = 3, LeasePurchase = true},
             };
             for (int i = 0; i < newActiveBusinesses.Count; i++)
             {
                 activeBusinessesService.AddBusiness(newActiveBusinesses[i]);
             }
-            var activeBusinesses = activeBusinessesService.GetActiveBusinesses(5);
-            var activeBusinesses2 = activeBusinessesService.GetActiveBusinesses(6);
-            var businesses = activeBusinessesService.GetBusinesses(5);
+            var activeBusinesses = activeBusinessesService.GetActiveBusinesses(user1.Id);
+            var activeBusinesses2 = activeBusinessesService.GetActiveBusinesses(user2.Id);
+            var businesses = activeBusinessesService.GetBusinesses(user1.Id);
             if (activeBusinesses.Count == 2)
                 rez++;
             if (activeBusinesses2.Count == 1)
@@ -47,12 +49,12 @@ namespace UnitTests.DataRepositoryTests
                 activeBusinessesService.DeleteBusiness(activeBusinesses[i].Id);
             }
             activeBusinessesService.DeleteBusiness(activeBusinesses2[0].Id);
-            activeBusinesses = activeBusinessesService.GetActiveBusinesses(5);
-            activeBusinesses2 = activeBusinessesService.GetActiveBusinesses(6);
+            activeBusinesses = activeBusinessesService.GetActiveBusinesses(user1.Id);
+            activeBusinesses2 = activeBusinessesService.GetActiveBusinesses(user2.Id);
             if (activeBusinesses.Count == 0 && activeBusinesses2.Count == 0)
                 rez++;
-            usersService.DeleteUser("user1", "1111");
-            usersService.DeleteUser("user2", "2222");
+            usersService.DeleteUser(user1.Login, "1111");
+            usersService.DeleteUser(user2.Login, "2222");
             Assert.AreEqual(rez, 5);
         }
     }

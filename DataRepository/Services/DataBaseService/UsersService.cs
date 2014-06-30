@@ -115,5 +115,20 @@ namespace DataRepository.Services.DataBaseService
             return code;
         }
 
+        public User GetUser(string login)
+        {
+            var user = new User();
+            using (var repoUnit = new RepoUnit())
+            {
+                user = repoUnit.Users.FindFirstBy(u => u.Login == login);
+            }
+            if (user != null)
+            {
+                user.ActiveBusinesses = null;
+                return user;
+            }
+            return null;
+        }
+
     }
 }
