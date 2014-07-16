@@ -83,6 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="actions.svc" />
+    <Content Include="activeactions.svc" />
+    <Content Include="activebusinesses.svc" />
     <Content Include="businesses.svc" />
     <Content Include="languages.svc" />
     <Content Include="news.svc" />

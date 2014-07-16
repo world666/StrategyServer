@@ -16,6 +16,7 @@ namespace DataRepository.Models.GenericRepository
         private IDataRepository<Action> _Actions;
         private IDataRepository<New> _News;
         private IDataRepository<ActiveBusiness> _ActiveBusinesses;
+        private IDataRepository<ActiveAction> _ActiveActions;
 
         private ServerContext getContext()
         {
@@ -66,6 +67,11 @@ namespace DataRepository.Models.GenericRepository
         public IDataRepository<ActiveBusiness> ActiveBusinesses
         {
             get { return _ActiveBusinesses ?? (_ActiveBusinesses = getRepository<ActiveBusiness>()); }
+        }
+
+        public IDataRepository<ActiveAction> ActiveActions
+        {
+            get { return _ActiveActions ?? (_ActiveActions = getRepository<ActiveAction>()); }
         }
 
         public void Commit()

@@ -50,6 +50,10 @@
   <ItemGroup>
     <Compile Include="Actions\ActionService.cs" />
     <Compile Include="Actions\IActionService.cs" />
+    <Compile Include="ActiveActions\ActiveActionService.cs" />
+    <Compile Include="ActiveActions\IActiveActionService.cs" />
+    <Compile Include="ActiveBusinesses\ActiveBusinessService.cs" />
+    <Compile Include="ActiveBusinesses\IActiveBusinessService.cs" />
     <Compile Include="Businesses\BusinessService.cs" />
     <Compile Include="Businesses\IBusinessService.cs" />
     <Compile Include="News\NewService.cs" />

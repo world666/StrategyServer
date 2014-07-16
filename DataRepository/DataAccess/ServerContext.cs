@@ -14,6 +14,7 @@ namespace DataRepository.DataAccess
         public IDbSet<Action> Actions { get; set; }
         public IDbSet<New> News { get; set; }
         public IDbSet<ActiveBusiness> ActiveBusinesses { get; set; }
+        public IDbSet<ActiveAction> ActiveActions { get; set; }
 
         public ServerContext()
             : base(GetConnectionName())

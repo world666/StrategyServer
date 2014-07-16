@@ -16,4 +16,12 @@
     {
         English, Russian
     } */
+    public enum ActiveBusinessAddedState
+    {
+        Success, Fail
+    }
+    public enum ActiveActionAddedState
+    {
+        Success, Fail
+    }
 }

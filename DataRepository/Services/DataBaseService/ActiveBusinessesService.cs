@@ -10,7 +10,7 @@ namespace DataRepository.Services.DataBaseService
 {
     public class ActiveBusinessesService
     {
-        public void AddBusiness(ActiveBusiness newActiveBusiness)
+        public ActiveBusinessAddedState AddBusiness(ActiveBusiness newActiveBusiness)
         {
             newActiveBusiness.StartDate = DateTime.Now;
             newActiveBusiness.LastUpdate = newActiveBusiness.StartDate;
@@ -18,6 +18,7 @@ namespace DataRepository.Services.DataBaseService
             {
                 repoUnit.ActiveBusinesses.Save(newActiveBusiness);
             }
+            return ActiveBusinessAddedState.Success;
         }
 
         public void DeleteBusiness(int activeBusinessId)
@@ -43,7 +44,7 @@ namespace DataRepository.Services.DataBaseService
             {
                 b.User = null;
                 b.Business = null;
-                b.Actions = null;
+                b.ActiveActions = null;
             });
             return activeBusinesses;
         }
@@ -68,7 +69,7 @@ namespace DataRepository.Services.DataBaseService
                     {
                         b.Region = null;
                         b.Actions = null;
-                        b.ActiveBusinesses = null;
+                        //b.ActiveBusinesses = null;
                         retBusinesses.Add(b);
                     }
                 }

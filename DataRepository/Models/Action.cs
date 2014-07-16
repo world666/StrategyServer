@@ -23,7 +23,7 @@ namespace DataRepository.Models
                 Descriptions = String.Join("[$]", value);
             }
         }
-        public int BusinessId { get; set; }
+        public int? BusinessId { get; set; }
         public virtual Business Business { get; set; }
     }
 }
