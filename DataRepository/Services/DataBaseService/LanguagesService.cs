@@ -31,5 +31,58 @@ namespace DataRepository.Services.DataBaseService
             }
             return languages.Count;
         }
+
+        public List<Language> GetLanguagesList()
+        {
+            var allLanguages = new List<Language>();
+            using (var repoUnit = new RepoUnit())
+            {
+                allLanguages.AddRange(repoUnit.Languages.Load());
+            }
+            allLanguages.ForEach(l =>
+            {
+                if (l.LanguageName == null)
+                    l.LanguageName = "";
+            });
+            return allLanguages;
+        }
+
+        public void AddLanguages(List<Language> newLanguages)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var l in newLanguages)
+                {
+                    repoUnit.Languages.Save(l);
+                }
+            }
+        }
+
+        public void EditLanguages(List<Language> languages)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var l in languages)
+                {
+                    repoUnit.Languages.Edit(l);
+                }
+            }
+        }
+
+        public void DeleteLanguages(List<int> languageIds)
+        {
+            using (var repoUnit = new RepoUnit())
+            {
+                foreach (var id in languageIds)
+                {
+                    var language = repoUnit.Languages.FindFirstBy(l => l.Id == id);
+                    if (language != null)
+                    {
+                        repoUnit.Languages.Delete(language);
+                    }
+                }
+            }
+        }
+
     }
 }
